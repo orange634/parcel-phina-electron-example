@@ -1,7 +1,7 @@
 {
   "name": "parcel-phina-electron-example",
   "version": "1.0.0",
-  "description": "ore ore parcel + phina.js sample",
+  "description": "parcel + phina.js electron sample",
   "main": "electron.js",
   "build": {
     "appId": "parcel.phina.electron",
