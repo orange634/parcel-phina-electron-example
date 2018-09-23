@@ -6,7 +6,7 @@ const url = require('url')
 
 let mainWindow
 
-app.on('ready', () => {
+const createWindow = () => {
     let mainWindow = new BrowserWindow({
         contentSecurityPolicy: `default-src 'none'`,
         width: 800,
@@ -21,7 +21,9 @@ app.on('ready', () => {
     mainWindow.on('closed', () => {
         mainWindow = null
     })
-})
+}
+
+app.on('ready', () => createWindow())
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
