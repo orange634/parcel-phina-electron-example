@@ -7,20 +7,20 @@
   "license": "MIT",
   "build": {
     "appId": "parcel.phina.electron",
-    "mac": {
-      "category": "dmg"
-    },
     "files": [
       "electron.js",
       "build/*"
-    ]
+    ],
+    "directories": {
+      "output": "app"
+    }
   },
   "scripts": {
-    "clear": "rm -rf ./.cache && rm -rf build",
-    "dev": "npm run clear && parcel src/index.html -d build",
-    "ele:dev": "concurrently \"npm run dev\" \"ELECTRON_START_URL=http://localhost:1234 electron .\"",
+    "clear": "rm -rf ./dist && rm -rf ./.cache && rm -rf ./build",
+    "dev": "npm run clear && parcel src/index.html",
+    "ele:dev": "concurrently \"npm run dev\" \"NODE_ENV=develop electron .\"",
     "build": "npm run clear && parcel build ./src/index.html -d build --public-url ./",
-    "pack": "build && electron-builder --dir"
+    "pack": "npm run build && electron-builder --dir"
   },
   "devDependencies": {
     "concurrently": "^4.0.1",
