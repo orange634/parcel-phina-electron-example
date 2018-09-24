@@ -20,7 +20,7 @@
     "dev": "npm run clear && parcel src/index.html",
     "ele:dev": "concurrently \"npm run dev\" \"NODE_ENV=develop electron .\"",
     "build": "npm run clear && parcel build ./src/index.html -d build --public-url ./",
-    "pack": "npm run build && electron-builder --dir"
+    "pack": "npm run build && electron-builder"
   },
   "devDependencies": {
     "concurrently": "^4.0.1",
