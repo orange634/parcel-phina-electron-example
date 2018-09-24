@@ -9,21 +9,20 @@
     "appId": "parcel.phina.electron",
     "files": [
       "electron.js",
-      "build/*"
+      "elebuild/*"
     ],
     "directories": {
       "output": "app"
     }
   },
   "scripts": {
-    "clear": "rm -rf ./dist && rm -rf ./.cache && rm -rf ./build",
+    "clear": "rm -rf ./dist && rm -rf ./.cache && rm -rf ./build && rm -rf ./elebuild",
     "dev": "npm run clear && parcel src/index.html",
-    "ele:dev": "concurrently \"npm run dev\" \"NODE_ENV=develop electron .\"",
-    "build": "npm run clear && parcel build ./src/index.html -d build --public-url ./",
-    "pack": "npm run build && electron-builder"
+    "build": "npm run clear && parcel build src/index.html -d build",
+    "elebuild": "npm run clear && parcel build ./src/index.html -d elebuild --public-url ./",
+    "pack": "npm run elebuild && electron-builder"
   },
   "devDependencies": {
-    "concurrently": "^4.0.1",
     "electron": "^3.0.0",
     "electron-builder": "^20.28.4",
     "parcel": "^1.9.7"

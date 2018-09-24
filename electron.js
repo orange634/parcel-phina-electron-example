@@ -3,28 +3,19 @@ const {app, BrowserWindow} = electron
 const path = require('path')
 const url = require('url')
 
-// メインウィンドウを宣言 <-- (1)
 let mainWindow
 
-// ウィンドウの生成 <--- (2)
 const createWindow = () => {
     let mainWindow = new BrowserWindow({
         contentSecurityPolicy: "default-src 'none'",
         width: 400,
         height: 600
     })
-    // developならローカルホストでホスティングされているurlを
-    // developでなければビルド済みの成果物を読み込む <--- (3)
-    let startUrl;
-    if (process.env.NODE_ENV === 'develop') {
-        startUrl = 'http://localhost:1234';
-    } else {
-        startUrl = url.format({
-            pathname: path.join(__dirname, './build/index.html'),
-            protocol: 'file:',
-            slashes: true
-        })
-    }
+    const startUrl = url.format({
+        pathname: path.join(__dirname, './elebuild/index.html'),
+        protocol: 'file:',
+        slashes: true
+    })
     mainWindow.loadURL(startUrl)
     mainWindow.on('closed', () => {
         mainWindow = null
